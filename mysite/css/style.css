@@ -1,0 +1,156 @@
+/* Base setup */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* Flex container for layout */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Let main expand to fill available space */
+main {
+  flex: 1;
+}
+
+/* Header */
+header {
+  background: #0d1117;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+
+/* Profile picture */
+.profile-pic {
+  width: 80px;          /* adjust size */
+  height: 80px;
+  border-radius: 50%;   /* makes it round */
+  object-fit: cover;    /* keeps image aspect ratio */
+  border: 2px solid #fff; /* optional border */
+}
+
+header .accent {
+  color: #58a6ff;
+}
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  color: #58a6ff;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  color: #0d1117;
+  margin-top: 0;
+}
+
+/* Projects grid */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fefefe;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.project-card a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+/* About section */
+.about a{
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.about a:hover {
+  text-decoration: underline;
+}
+
+/* Certifications section*/
+.certifications h4{
+  display: inline;
+}
+
+.certifications a{
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.certifications a:hover{
+  text-decoration: underline;
+}
+
+/* Contact section */
+.contact a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: #0d1117;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+}
