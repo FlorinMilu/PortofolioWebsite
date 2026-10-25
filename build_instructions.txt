@@ -1,0 +1,26 @@
+## Local unde ai repo-ul
+aws ecr get-login-password --region us-east-1 | sudo docker login \
+--username AWS \
+--password-stdin 162452196343.dkr.ecr.us-east-1.amazonaws.com
+
+sudo docker build -t webportofolio:latest .
+sudo docker tag webportofolio:latest 162452196343.dkr.ecr.us-east-1.amazonaws.com/websites/webportofolio:latest
+sudo docker push 162452196343.dkr.ecr.us-east-1.amazonaws.com/websites/webportofolio:latest
+
+## Pe server:
+sudo systemctl stop docker
+sudo systemctl stop nginx
+aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 162452196343.dkr.ecr.us-east-1.amazonaws.com
+sudo docker pull 162452196343.dkr.ecr.us-east-1.amazonaws.com/websites/webportofolio:latest
+sudo docker run -d -p 80:80 -p 443:443     -v /home/ubuntu/certs:/etc/letsencrypt/live/florinmilu-portofolio.ro:ro     162452196343.dkr.ecr.us-east-1.amazonaws.com/websites/webportofolio:latest
+
+--------------------------------------------------------------
+
+sudo certbot certonly --standalone --non-interactive --agree-tos \
+-m fmilu87@gmail.com \
+-d florinmilu-portofolio.ro -d www.florinmilu-portofolio.ro
+
+
+sudo cp /etc/letsencrypt/live/florinmilu-portofolio.ro/fullchain.pem /home/ubuntu/certs/
+sudo cp /etc/letsencrypt/live/florinmilu-portofolio.ro/privkey.pem /home/ubuntu/certs/
+sudo chmod 644 /home/ubuntu/certs/*.pem
